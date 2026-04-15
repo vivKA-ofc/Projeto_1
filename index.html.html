@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Democracia Digital - Trabalho de Grupo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* RESET BÁSICO */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* CABEÇALHO E NAVEGAÇÃO */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px 0 0 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .subtitulo {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 0 20px;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.ativo {
+            background-color: #e67e22;
+            color: white;
+        }
+
+        /* SEÇÕES GERAIS */
+        section {
+            padding: 60px 0;
+        }
+
+        .titulo-seccao {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #1e3c72;
+            border-bottom: 3px solid #e67e22;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .fundo-cinza {
+            background-color: #ecf0f1;
+        }
+
+        .fundo-azul {
+            background-color: #1e3c72;
+            color: white;
+        }
+        .fundo-azul .titulo-seccao {
+            color: white;
+            border-bottom-color: #f1c40f;
+        }
+
+        /* GRIDS E LAYOUTS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card i {
+            color: #2a5298;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #1e3c72;
+        }
+
+        .link-externo {
+            display: inline-block;
+            margin-top: 15px;
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link-externo:hover {
+            text-decoration: underline;
+        }
+
+        /* BOTÕES */
+        .botao {
+            display: inline-block;
+            background-color: #e67e22;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .botao:hover {
+            background-color: #d35400;
+        }
+
+        /* LISTA DE PARTICIPAÇÃO */
+        .lista-participacao ul {
+            list-style: none;
+        }
+
+        .lista-participacao li {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .lista-participacao i {
+            color: #e67e22;
+            width: 30px;
+        }
+
+        /* ESTILO PARA A CAIXA DA IMAGEM (SUBSTITUI O VÍDEO) */
+        .imagem-participacao {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .imagem-participacao img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #ecf0f1;
+        }
+
+        /* ITENS DE BOAS PRÁTICAS */
+        .pratica-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        .pratica-item i {
+            color: #f1c40f;
+            margin-bottom: 15px;
+        }
+
+        /* FORMULÁRIO */
+        .form-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .linha-form {
+            margin-bottom: 20px;
+        }
+
+        .linha-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .linha-form input[type="text"],
+        .linha-form input[type="email"],
+        .linha-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .radio-group input {
+            margin-right: 5px;
+        }
+
+        .nota {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: #1e272e;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        /* IMAGENS PLACEHOLDER */
+        .imagem-intro img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .card img {
+            margin: 0 auto 15px auto;
+            display: block;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .grid-2, .cards, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-landmark"></i> Democracia Digital</h1>
+            <p class="subtitulo">Instituições Públicas ao Alcance de Todos</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio" class="ativo">Início</a></li>
+                <li><a href="#instituicoes">Instituições</a></li>
+                <li><a href="#servicos">Serviços Digitais</a></li>
+                <li><a href="#participacao">Participação Cívica</a></li>
+                <li><a href="#boas-praticas">Cidadania Digital</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="destaque">
+            <div class="container grid-2">
+                <div class="texto-intro">
+                    <h2>O Futuro da Cidadania é Digital</h2>
+                    <p>Este site foi criado no âmbito da disciplina de Sistemas de Informação (UFCD - Criação de Páginas Web) para explicar como podemos interagir com o Estado sem sair de casa. Descobre como funciona a Assembleia, o SNS24, as Petições Públicas e muito mais.</p>
+                    <p><strong>Objetivo:</strong> Aproximar os cidadãos das decisões políticas através da tecnologia, promovendo a transparência e a facilidade de acesso.</p>
+                    <a href="#instituicoes" class="botao">Explorar Conteúdos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="imagem-intro">
+                    <img src="https://placehold.co/600x400/1e3c72/FFFFFF?text=Democracia+Digital" alt="Ilustração de Democracia Digital">
+                </div>
+            </div>
+        </section>
+
+        <section id="instituicoes">
+            <div class="container">
+                <h2 class="titulo-seccao">Instituições Públicas</h2>
+                <div class="cards">
+                    <div class="card">
+                        <i class="fas fa-university fa-3x"></i>
+                        <h3>Assembleia da República</h3>
+                        <p>O órgão legislativo de Portugal. Aqui são discutidas e aprovadas as leis que nos regem. Podes assistir às sessões plenárias online através do site oficial e consultar a agenda dos deputados.</p>
+                        <a href="https://www.parlamento.pt" target="_blank" class="link-externo">Visitar Site Oficial <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-building fa-3x"></i>
+                        <h3>Governo de Portugal</h3>
+                        <p>Responsável pela condução da política geral do país. No portal do Governo encontras comunicados, legislação recente e os programas das diferentes áreas ministeriais (Educação, Saúde, etc.).</p>
+                        <a href="https://www.portugal.gov.pt" target="_blank" class="link-externo">Visitar Site Oficial <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-city fa-3x"></i>
+                        <h3>Câmaras Municipais</h3>
+                        <p>São o poder local mais próximo de ti. As Câmaras gerem o teu concelho: escolas, estradas, recolha de lixo. A maioria tem sites com formulários para reportar problemas na rua (ex: iluminação avariada).</p>
+                        <a href="#" class="link-externo">Exemplo: Portal do Munícipe <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="fundo-cinza">
+            <div class="container">
+                <h2 class="titulo-seccao">Serviços Públicos Digitais (Essenciais)</h2>
+                <div class="cards">
+                    <div class="card">
+                        <img src="https://placehold.co/100x100/0066cc/ffffff?text=ePT" alt="ePortugal" style="width:80px; border-radius:50%; margin:0 auto 15px auto;">
+                        <h3>ePortugal</h3>
+                        <p>O portal único de serviços públicos. Aqui podes renovar o Cartão de Cidadão, pedir certidões de nascimento ou consultar o teu boletim de vacinas sem filas e sem papel.</p>
+                        <a href="https://eportugal.gov.pt" target="_blank" class="link-externo">Aceder <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-heartbeat fa-3x" style="color:#e74c3c;"></i>
+                        <h3>SNS 24</h3>
+                        <p>Portal do Serviço Nacional de Saúde. Permite marcar consultas no centro de saúde, renovar receitas médicas crónicas e ver o teu boletim de vacinas COVID-19 ou Gripe.</p>
+                        <a href="https://www.sns24.gov.pt" target="_blank" class="link-externo">Aceder <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-file-invoice fa-3x" style="color:#27ae60;"></i>
+                        <h3>Portal das Finanças</h3>
+                        <p>Gerido pela Autoridade Tributária. É aqui que entregas o IRS todos os anos (abril a junho) e consultas o IUC (Imposto Único de Circulação - Selo do Carro).</p>
+                        <a href="https://www.portaldasfinancas.gov.pt" target="_blank" class="link-externo">Aceder <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="participacao">
+            <div class="container">
+                <h2 class="titulo-seccao">Como Participar Online?</h2>
+                <div class="grid-2">
+                    <div class="lista-participacao">
+                        <ul>
+                            <li><i class="fas fa-pen"></i> <strong>Petições Públicas:</strong> Qualquer cidadão pode criar ou assinar uma petição no site da Assembleia da República. Se reunir 7.500 assinaturas, o tema é obrigatoriamente discutido em Plenário.</li>
+                            <li><i class="fas fa-coins"></i> <strong>Orçamentos Participativos:</strong> As Câmaras Municipais e o Governo reservam uma verba para projetos escolhidos pelos cidadãos. Podes votar online no projeto que queres ver construído na tua rua ou escola.</li>
+                            <li><i class="fas fa-envelope"></i> <strong>Contactar Autarquias:</strong> Através do "Balcão do Munícipe" online podes pedir informações, marcar atendimentos ou reportar ocorrências na via pública.</li>
+                        </ul>
+                    </div>
+                    <div class="imagem-participacao">
+                        <h4>Direito de Petição Pública</h4>
+                        <img src="https://placehold.co/600x300/e67e22/FFFFFF?text=Cidadania+Ativa+Online" alt="Ilustração de pessoas a participar civicamente online">
+                        <p class="legenda" style="margin-top: 10px;"><i class="fas fa-users"></i> A tua voz pode mudar leis. Assina petições online.</p>
+                        <a href="https://www.parlamento.pt/Paginas/Peticoes.aspx" target="_blank" class="botao" style="margin-top: 15px; padding: 8px 20px;">Ver Petições Ativas <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="boas-praticas" class="fundo-azul">
+            <div class="container">
+                <h2 class="titulo-seccao">Boas Práticas de Cidadania Digital</h2>
+                <div class="grid-4">
+                    <div class="pratica-item">
+                        <i class="fas fa-shield-alt fa-2x"></i>
+                        <h3>Segurança</h3>
+                        <p>Nunca partilhes a senha do Portal das Finanças ou o código da Chave Móvel Digital. O Estado nunca pede esses dados por SMS.</p>
+                    </div>
+                    <div class="pratica-item">
+                        <i class="fas fa-search fa-2x"></i>
+                        <h3>Transparência</h3>
+                        <p>Consulta o portal "Base.gov" para veres os contratos públicos. Podes saber quanto custou a obra da tua rua.</p>
+                    </div>
+                    <div class="pratica-item">
+                        <i class="fas fa-comment-dots fa-2x"></i>
+                        <h3>Respeito</h3>
+                        <p>Nos fóruns online e redes sociais das instituições, debate ideias. O discurso de ódio ou ameaça é crime e não é opinião.</p>
+                    </div>
+                    <div class="pratica-item">
+                        <i class="fas fa-newspaper fa-2x"></i>
+                        <h3>Filtragem</h3>
+                        <p>Cuidado com Fake News. Desconfia de áudios de WhatsApp. Confirma sempre a informação no site oficial da instituição.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <div class="container">
+                <h2 class="titulo-seccao">Contacta-nos / Inquérito Rápido</h2>
+                <div class="form-box">
+                    <p>No âmbito deste projeto escolar, gostaríamos de saber a tua opinião. Achas que o Estado está mais acessível digitalmente?</p>
+                    
+                    <form action="#" method="post">
+                        <div class="linha-form">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome" placeholder="O teu nome completo" required>
+                        </div>
+                        
+                        <div class="linha-form">
+                            <label for="email">Email da Escola:</label>
+                            <input type="email" id="email" name="email" placeholder="exemplo@aefc.edu.pt" required>
+                        </div>
+                        
+                        <div class="linha-form">
+                            <label>Costumas usar serviços públicos online?</label>
+                            <div class="radio-group">
+                                <input type="radio" id="sim" name="uso" value="sim" checked>
+                                <label for="sim">Sim, frequentemente</label>
+                                
+                                <input type="radio" id="asvezes" name="uso" value="asvezes">
+                                <label for="asvezes">Às vezes</label>
+                                
+                                <input type="radio" id="nao" name="uso" value="nao">
+                                <label for="nao">Nunca usei</label>
+                            </div>
+                        </div>
+                        
+                        <div class="linha-form">
+                            <label for="mensagem">Sugestão ou Comentário:</label>
+                            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreve aqui a tua ideia sobre o site ou sobre a democracia digital..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="botao">Enviar Feedback <i class="fas fa-paper-plane"></i></button>
+                        <p class="nota"><i class="fas fa-info-circle"></i> Este formulário é um protótipo para o trabalho de Sistemas de Informação. Não envia dados reais.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <p><strong>Projeto Escolar - Sistemas de Informação (SIN) 10º Ano | Técnico de Multimédia</strong></p>
+            <p>Trabalho realizado por: Miguel Vilar e Rodrigo Silva | Turma: 10º PM | Data limite: 15 de Abril de 2026</p>
+            <p style="margin-top:15px; font-size:0.8rem;">&copy; 2026 - AEFC - Agrupamento de Escolas.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
